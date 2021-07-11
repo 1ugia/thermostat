@@ -6,8 +6,7 @@
   </head>
   <body>
     <section>
-      <h1>Current temperature:</h1>
-      <h1 id="temperature">°C</h1>
+      <h1>Current temperature: <span id="temperature"></span>°C</h1>
       <p>
         <button id="temperature-up">+</button>
         <button id="temperature-down">-</button>
@@ -16,13 +15,17 @@
         <button id="powersaving-on">PSM on</button>
         <button id="powersaving-off">PSM off</button>
       </p>
-      <h1>Current temperature: <span id="current-temperature"></span>°C</h1>
+      <h1>Select a country:</h1>
       <select id="current-city">
         <option value="London">London</option>
         <option value="New york">New York</option>
         <option value="Paris">Paris</option>
-        <option value="Tokyo">Tokyo</option>    
+        <option value="Tokyo">Tokyo</option>
+        <option value="Seoul">Seoul</option>
+        <option value="Warsaw">Warsaw</option>
+        <option value="Moscow">Moscow</option>
       </select>
+      <h2>Current selected city temperature: <span id="current-temperature"></span>°C</h2>
     </section>
   </body>
   <script src="src/thermostat.js"></script>
