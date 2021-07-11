@@ -35,28 +35,25 @@ document.addEventListener("DOMContentLoaded", () => {
     updateTemperature();
   })
 
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a2d3431c8c42a066164450a04bbc3074&units=metric') //unit=metric needed to activate
-  .then((response) => {
-    return response.json()
+  // Displaying weather temp 
+  const displayWeather = (city) => {
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a3d9eb01d4de82b9b8d0849ef604dbed&units=metric`
+  
+    fetch(url)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        document.querySelector('#current-temperature').innerText = data.main.temp;
+      })
+  }
+  displayWeather('London');
+
+  document.querySelector('#current-city').addEventListener('change', (event) => {
+    event.preventDefault();
+    const city = document.querySelector('#current-city').value;
+
+    displayWeather(city);
   })
-  // .then((data) => {
-  //   console.log(data.main.temp); //show visability on console
-  // })
-  .then((data) => {
-    document.querySelector('#current-temperature').innerText = data.main.temp;
-  });
 
-  const selectElement = document.querySelector('#current-city');
-  selectElement.addEventListener('change', (event) => {
-  const city = event.target.value;
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a2d3431c8c42a066164450a04bbc3074&units=metric`
-
-  fetch(url)
-    .then((response) => {
-      return response.json()
-    })
-    .then((data) => {
-      document.querySelector('#current-temperature').innerText = data.main.temp;
-    })
-  });
 });
