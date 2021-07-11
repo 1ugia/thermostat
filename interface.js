@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('#temperature').innerText = thermostat.temperature;
     document.querySelector('#temperature').className = thermostat.energyUsage();
   }
-  
 
   const thermostat = new Thermostat();
   updateTemperature();
@@ -35,4 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('#power-saving-status').innerText = 'off';
     updateTemperature();
   })
+
+  fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=a2d3431c8c42a066164450a04bbc3074&units=metric')
+  .then((response) => {
+    return response.json()
+  })
+  .then((data) => {
+    console.log(data.main.temp)  
+  });
+
 });
